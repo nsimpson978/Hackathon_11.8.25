@@ -8,10 +8,27 @@ repositories {
     mavenCentral()
 }
 
-javafx.version = "22"
-javafx.modules = ["javafx.fxml", "javafx.controls"]
+javafx {
+    version = "22"
+    modules = [ "javafx.controls", "javafx.fxml" ]
+}
 
-sourceSets.main.java.srcDir("src");
-sourceSets.main.resources.srcDir("resources");
+application {
+    mainClass = "Main"
+}
 
-application.mainClass = "Main"
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src"]
+        }
+        resources {
+            srcDirs = ["resources"]
+            includes = ["**/*.fxml", "**/*.jpg", "**/*.png"]
+        }
+    }
+}
+
+dependencies {
+    implementation 'org.json:json:20210307'
+}
